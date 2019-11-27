@@ -13,5 +13,36 @@ import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 // compone
 export default function App() {
-  return <h1>hello from app component</h1>;
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+        <Route path="/checkout">
+          <Checkout />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/products">
+          <Products />
+        </Route>
+        <Route
+          path="/products/:id"
+          children={<ProductDetails></ProductDetails>}
+        ></Route>
+
+        <Route path="*">
+          <Error />
+        </Route>
+      </Switch>
+    </Router>
+  );
 }
